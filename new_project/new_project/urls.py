@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from post.views import HelloWorld
-
+from post.api.views import PostApiView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('post/', HelloWorld.as_view()),
+    path('api/posts', PostApiView.as_view()),
 ]
