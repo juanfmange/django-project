@@ -5,9 +5,14 @@ from rest_framework import status
 from post.models import Post
 from rest_framework.viewsets import ViewSet, ModelViewSet
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
 from post.api.serializer import PostSerializer
+from post.api.permissions import IsAdmindOrReadOnly
+
+
 
 class PostModelViewSet(ModelViewSet):
+    permission_classes = [IsAdmindOrReadOnly]
     serializer_class = PostSerializer
     queryset = Post.objects.all()
 
